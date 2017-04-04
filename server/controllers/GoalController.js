@@ -2,7 +2,7 @@ const Goal = require('../models').Goal;
 
 module.exports = {
 
-  createGoal(req, res) {
+  createGoal: function(req, res) {
     if (!req.body.name) {
       return res.status(400).send('Name can not be empty.');
     }
@@ -14,13 +14,13 @@ module.exports = {
     .catch(error => res.status(400).send(error));
   },
 
-  getAllGoal(req, res) {
+  getAllGoal: function(req, res) {
     return Goal.findAll()
     .then(goals => res.status(201).send(goals))
     .catch(error => res.status(400).send(error));
   },
 
-  findGoalById(req, res) {
+  findGoalById: function(req, res) {
     return Goal.findById(req.params.id)
     .then(goal => {
       if (goal) {

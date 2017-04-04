@@ -5,5 +5,8 @@ module.exports = (app) => {
     message: 'Welcome to the Goals API!',
   }));
 
-  app.post('/api/goal', goalController.create);
+  app.post('/api/createGoal', goalController.createGoal);
+  app.get('/api/getAllGoal', goalController.getAllGoal);
+  app.get('/api/findGoalById/:id', goalController.findGoalById);
+
 };

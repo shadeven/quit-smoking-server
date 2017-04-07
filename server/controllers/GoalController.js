@@ -9,6 +9,7 @@ module.exports = {
 
     return Goal.create({
       name: req.body.name,
+      description: req.body.description
     })
     .then(goal => res.status(201).send(goal))
     .catch(error => res.status(400).send(error));

@@ -1,4 +1,5 @@
 const Goal = require('../models').Goal;
+const Action = require('../models').Action;
 
 module.exports = {
 
@@ -16,8 +17,16 @@ module.exports = {
   },
 
   getAllGoal: function(req, res) {
-    return Goal.findAll()
-    .then(goals => res.status(201).send(goals))
+    return Goal.findAll({
+        include: [{
+          model: Action,
+          as: 'actions'
+        }]
+    })
+    .then(goals => {
+      console.log(goals);
+      res.status(201).send(goals);
+    })
     .catch(error => res.status(400).send(error));
   },
 

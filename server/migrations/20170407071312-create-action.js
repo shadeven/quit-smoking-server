@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Goals', {
+    return queryInterface.createTable('Actions', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,17 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
       },
       description: {
-          type: Sequelize.STRING,
+          type: Sequelize.STRING
       },
-      due_date: {
+      startDate: {
         type: Sequelize.DATE
       },
-      isAchieved: {
-        type: Sequelize.STRING,
+      endDate: {
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
@@ -28,10 +27,18 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      goalId: {
+          type: Sequelize.INTEGER,
+          references: {
+            model: 'Goals',
+              key: 'id',
+              as: 'goalId'
+          }
       }
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Goals');
+    return queryInterface.dropTable('Actions');
   }
 };

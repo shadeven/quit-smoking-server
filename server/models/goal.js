@@ -17,7 +17,10 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        Goal.hasMany(models.Action, {
+          foreignKey: 'goalId',
+          as: 'actions'
+        });
       }
     }
   });

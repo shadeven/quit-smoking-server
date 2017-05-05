@@ -21,7 +21,10 @@ module.exports = {
         include: [{
           model: Action,
           as: 'actions'
-        }]
+        }],
+        order: [
+          ['id', 'ASC']
+        ]
     })
     .then(goals => {
       console.log(goals);

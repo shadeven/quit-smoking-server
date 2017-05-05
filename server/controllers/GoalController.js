@@ -40,6 +40,17 @@ module.exports = {
       }
     })
     .catch(error => res.status(400).send(error));
+  },
+  
+  deleteGoalById: function(req, res) {
+    return Goal.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(deleted => {
+        res.status(200).json({message: 'Deleted successfully'});
+      })
+      .catch(error => res.status(400).send(error));
   }
-
 };
